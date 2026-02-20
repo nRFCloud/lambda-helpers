@@ -1,0 +1,29 @@
+import assert from 'node:assert/strict'
+import { describe, it } from 'node:test'
+import { aResponse } from './aResponse.ts'
+
+void describe('aResponse()', () => {
+	void it('should return a response', () =>
+		assert.deepEqual(
+			aResponse(
+				200,
+				{
+					'@context': new URL(`https://example.com/some-context`),
+					foo: 'bar',
+				},
+				60 * 10,
+			),
+			{
+				statusCode: 200,
+				headers: {
+					'Cache-Control': `public, max-age=${60 * 10}`,
+					'content-length': '59',
+					'content-type': 'application/json',
+				},
+				body: JSON.stringify({
+					'@context': new URL(`https://example.com/some-context`),
+					foo: 'bar',
+				}),
+			},
+		))
+})

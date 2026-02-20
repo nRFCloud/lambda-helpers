@@ -1,0 +1,53 @@
+import type middy from '@middy/core'
+import {
+	formatTypeBoxErrors,
+	validateWithTypeBox,
+} from '@nrfcloud/validate-with-typebox'
+import type { TSchema } from '@sinclair/typebox'
+import type { ValueError } from '@sinclair/typebox/errors'
+import { parseHeaders } from './parseHeaders.ts'
+import { tryAsJSON } from './tryAsJSON.ts'
+import { ValidationFailedError } from './validateInput.ts'
+
+export class ResponseValidationFailedError extends ValidationFailedError {
+	constructor(errors: ValueError[]) {
+		super(errors, 'Response validation failed')
+		this.name = 'ResponseValidationFailedError'
+	}
+}
+
+/**
+ * Validate responses created with `aResponse`
+ */
+export const validateResponse = <ResponseSchema extends TSchema>(
+	schema: ResponseSchema,
+): middy.MiddlewareObj => {
+	const validator = validateWithTypeBox(schema)
+	return {
+		after: async (req) => {
+			const body = req.response?.body
+			const headers = parseHeaders(req.response.headers)
+			const contentType = headers.get('content-type') ?? ''
+
+			if ((body?.length ?? 0) === 0) {
+				console.debug(`[validateResponse]`, `Response body is empty`)
+			}
+			if ((contentType?.includes('application/json') ?? false) === false) {
+				console.debug(`[validateResponse]`, `Response body is not JSON`)
+			}
+			const maybeValid = validator(tryAsJSON(req.response.body))
+			if ('errors' in maybeValid) {
+				console.error(
+					`[validateResponse]`,
+					`Response validation failed`,
+					req.response.body,
+					formatTypeBoxErrors(maybeValid.errors),
+					schema.title,
+				)
+				throw new ResponseValidationFailedError(maybeValid.errors)
+			}
+			console.debug(`[validateResponse]`, `Response is valid`, schema.title)
+			return undefined
+		},
+	}
+}
