@@ -8,7 +8,9 @@ import { corsHeaders } from './corsHeaders.ts'
 export const corsOPTIONS = (
 	...allowedMethods: string[]
 ): MiddlewareObj<APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2> => {
-	const setCorsHeaders = async (req: Request) => {
+	const setCorsHeaders = async (
+		req: Request<APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2>,
+	) => {
 		if (req.response === null) {
 			console.error(`[corsOPTIONS]`, `Response is null`)
 			return
@@ -16,13 +18,15 @@ export const corsOPTIONS = (
 		req.response = {
 			...req.response,
 			headers: {
-				...(req.response.headers ?? {}),
+				...(req.response?.headers ?? {}),
 				...corsHeaders(req.event, allowedMethods),
 			},
 		}
 	}
 	return {
-		before: async (req) => {
+		before: async (
+			req: Request<APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2>,
+		) => {
 			if (req.event.requestContext.http.method === 'OPTIONS') {
 				console.debug(`[corsOPTIONS]`, `Handling OPTIONS request`)
 				return {
