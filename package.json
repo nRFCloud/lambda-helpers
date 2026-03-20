@@ -22,7 +22,7 @@
     "@nrfcloud/validate-with-typebox": "npm:@jsr/nrfcloud__validate-with-typebox@^1.0.2",
     "@types/aws-lambda": "8.10.161",
     "@types/node": "25.5.0",
-    "@typescript/native-preview": "7.0.0-dev.20260309.1",
+    "@typescript/native-preview": "7.0.0-dev.20260320.1",
     "prettier": "3.8.1"
   },
   "prettier": "@bifravst/prettier-config",
@@ -42,9 +42,9 @@
     "npm": ">=11"
   },
   "dependencies": {
-    "@aws-lambda-powertools/metrics": "2.31.0",
-    "@middy/core": "7.1.7",
-    "@middy/input-output-logger": "7.1.7",
+    "@aws-lambda-powertools/metrics": "2.32.0",
+    "@middy/core": "7.2.1",
+    "@middy/input-output-logger": "7.2.1",
     "@nrfcloud/problem-detail": "npm:@jsr/nrfcloud__problem-detail@^1.2.0",
     "@sinclair/typebox": "0.34.48"
   }
