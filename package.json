@@ -23,7 +23,7 @@
     "@types/aws-lambda": "8.10.161",
     "@types/node": "25.5.2",
     "@typescript/native-preview": "7.0.0-dev.20260409.1",
-    "prettier": "3.8.1"
+    "prettier": "3.8.2"
   },
   "prettier": "@bifravst/prettier-config",
   "release": {
