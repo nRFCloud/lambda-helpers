@@ -46,6 +46,6 @@
     "@middy/core": "7.2.1",
     "@middy/input-output-logger": "7.2.1",
     "@nrfcloud/problem-detail": "npm:@jsr/nrfcloud__problem-detail@^1.2.0",
-    "@sinclair/typebox": "0.34.48"
+    "@sinclair/typebox": "0.34.49"
   }
 }
