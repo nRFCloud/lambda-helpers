@@ -43,8 +43,8 @@
   },
   "dependencies": {
     "@aws-lambda-powertools/metrics": "2.33.0",
-    "@middy/core": "7.2.2",
-    "@middy/input-output-logger": "7.2.2",
+    "@middy/core": "7.2.3",
+    "@middy/input-output-logger": "7.2.3",
     "@nrfcloud/problem-detail": "npm:@jsr/nrfcloud__problem-detail@^1.2.1",
     "@sinclair/typebox": "0.34.49"
   }
