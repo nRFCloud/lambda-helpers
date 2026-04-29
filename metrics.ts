@@ -11,7 +11,7 @@ console.debug(`[Metrics]`, metricsEnabled ? `Enabled` : `Disabled`)
  */
 export const metricsForComponent = (
 	component: string,
-	namespace = 'hello-nrfcloud-backend',
+	namespace = 'nrfcloud',
 ): {
 	metrics: Metrics
 	track: AddMetricsFn
