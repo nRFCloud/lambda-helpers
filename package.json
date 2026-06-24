@@ -22,7 +22,7 @@
     "@nrfcloud/validate-with-typebox": "npm:@jsr/nrfcloud__validate-with-typebox@^1.0.4",
     "@types/aws-lambda": "8.10.162",
     "@types/node": "25.9.4",
-    "@typescript/native-preview": "7.0.0-dev.20260619.1",
+    "@typescript/native-preview": "7.0.0-dev.20260621.1",
     "prettier": "3.8.4"
   },
   "prettier": "@bifravst/prettier-config",
