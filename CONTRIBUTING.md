@@ -15,7 +15,7 @@ for AWS Lambda functions used in nRF Cloud and is published to
 
 ## Testing
 
-1. Run `npx tsgo` to type-check the project.
+1. Run `npx tsc` to type-check the project.
 1. Run `npm test` to run the unit tests.
 
 ## Releasing a new version
