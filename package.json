@@ -34,7 +34,6 @@
   },
   "devDependencies": {
     "@bifravst/prettier-config": "1.1.17",
-    "@nrfcloud/validate-with-typebox": "1.0.6",
     "@swc/core": "1.15.47",
     "@types/aws-lambda": "8.10.162",
     "@types/node": "25.9.5",
@@ -70,6 +69,7 @@
     "@middy/core": "7.7.2",
     "@middy/input-output-logger": "7.7.2",
     "@nrfcloud/problem-detail": "1.4.4",
+    "@nrfcloud/validate-with-typebox": "1.0.6",
     "@sinclair/typebox": "0.34.52"
   }
 }
