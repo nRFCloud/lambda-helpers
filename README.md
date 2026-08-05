@@ -1,13 +1,13 @@
 # `@nrfcloud/lambda-helpers`
 
-<https://jsr.io/@nrfcloud/lambda-helpers>
+<https://www.npmjs.com/package/@nrfcloud/lambda-helpers>
 
 Helper functions for AWS Lambda functions used in nRF Cloud.
 
 ## Install with NPM
 
 ```bash
-npx jsr add (--save-prod|--save-dev) @nrfcloud/lambda-helpers
+npm i (--save-prod|--save-dev) @nrfcloud/lambda-helpers
 ```
 
 ## Usage

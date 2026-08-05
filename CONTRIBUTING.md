@@ -2,7 +2,7 @@
 
 `@nrfcloud/lambda-helpers` is a published library: it provides helper functions
 for AWS Lambda functions used in nRF Cloud and is published to
-[JSR](https://jsr.io/@nrfcloud/lambda-helpers).
+[NPM](https://www.npmjs.com/package/@nrfcloud/lambda-helpers).
 
 ## Development setup
 
@@ -18,6 +18,19 @@ for AWS Lambda functions used in nRF Cloud and is published to
 1. Run `npx tsc` to type-check the project.
 1. Run `npm test` to run the unit tests.
 
+## Building the NPM package
+
+The package is published as compiled JavaScript with type declarations in the
+`npm/` folder, which is created by the `prepublishOnly` hook:
+
+1. [`.npm/compile.ts`](.npm/compile.ts) transpiles the TypeScript sources using
+   [`@swc/core`](https://www.npmjs.com/package/@swc/core) and rewrites the `.ts`
+   import specifiers to `.js`.
+1. [TypeScript 7](https://www.npmjs.com/package/typescript) emits the type
+   declarations, using [`.npm/tsconfig.npm.json`](.npm/tsconfig.npm.json).
+
+Run `npm run prepublishOnly` to build it locally.
+
 ## Releasing a new version
 
 1. Finally, create a commit that packages up all the changes.
@@ -29,7 +42,7 @@ for AWS Lambda functions used in nRF Cloud and is published to
 1. Once approved and CI passes, rebase or squash away!
 1. [`semantic-release` in the Test&Release workflow](.github/workflows/test-and-release.yaml)
    takes care of creating a new GitHub release and publishing the package to
-   [JSR](https://jsr.io/@nrfcloud/lambda-helpers).
+   [NPM](https://www.npmjs.com/package/@nrfcloud/lambda-helpers).
 
 Now that you have a new version of `@nrfcloud/lambda-helpers` published, you can
 bump the dependency in the projects that consume it.
