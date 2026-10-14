@@ -33,7 +33,7 @@
     "access": "public"
   },
   "devDependencies": {
-    "@bifravst/prettier-config": "2.0.3",
+    "@bifravst/prettier-config": "2.0.4",
     "@swc/core": "1.16.13",
     "@types/aws-lambda": "8.10.164",
     "@types/node": "26.6.5",
