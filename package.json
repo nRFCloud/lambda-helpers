@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@bifravst/prettier-config": "2.0.4",
-    "@swc/core": "1.16.18",
+    "@swc/core": "1.16.20",
     "@types/aws-lambda": "8.10.164",
     "@types/node": "26.6.5",
     "@typescript/native": "npm:typescript@7.0.2",
