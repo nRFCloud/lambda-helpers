@@ -70,7 +70,7 @@
     "@middy/core": "7.9.2",
     "@middy/input-output-logger": "7.9.2",
     "@nrfcloud/problem-detail": "1.5.2",
-    "@nrfcloud/validate-with-typebox": "1.1.0",
+    "@nrfcloud/validate-with-typebox": "1.1.1",
     "@sinclair/typebox": "0.34.52"
   }
 }
