@@ -2,7 +2,7 @@ import type { HttpStatusCode } from '@nrfcloud/problem-detail'
 import type { APIGatewayProxyStructuredResultV2 } from 'aws-lambda'
 
 export const aResponse = (
-	status: HttpStatusCode,
+	status: HttpStatusCode | number,
 	result?: {
 		'@context': URL
 	} & Record<string, unknown>,
