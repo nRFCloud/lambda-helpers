@@ -22,8 +22,19 @@ void describe('parseHeaders()', () => {
 		)
 	})
 
-	void it('should handle null values in headers', () =>
-		assert.deepEqual(parseHeaders(null), new Map()))
+	void it('should handle null headers', () =>
+		assert.deepEqual([...parseHeaders(null).entries()], []))
+
+	void it('should skip undefined values', () => {
+		const parsedHeaders = parseHeaders({ a: undefined, b: 'x' })
+		assert.equal(parsedHeaders.has('a'), false)
+		assert.equal(parsedHeaders.get('b'), 'x')
+	})
+
+	void it('should ignore invalid headers', () => {
+		const parsedHeaders = parseHeaders({ 'not valid': 'x', b: 'y' })
+		assert.deepEqual([...parsedHeaders.keys()], ['b'])
+	})
 
 	void it('should make header keys case-insensitive', () => {
 		const headers = {
