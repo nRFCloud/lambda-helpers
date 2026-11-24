@@ -7,6 +7,7 @@ import type { Static, StaticDecode, TSchema } from '@sinclair/typebox'
 import type { ValueError } from '@sinclair/typebox/compiler'
 import { Value } from '@sinclair/typebox/value'
 import type {
+	APIGatewayProxyEvent,
 	APIGatewayProxyEventV2,
 	APIGatewayProxyStructuredResultV2,
 	Context,
@@ -23,11 +24,31 @@ export class ValidationFailedError extends Error {
 	}
 }
 
-export const validateInput = <Schema extends TSchema>(
+/**
+ * The event properties used by `validateInput` to construct the default input.
+ *
+ * Both REST API (v1, `APIGatewayProxyEvent`) and HTTP API (v2, `APIGatewayProxyEventV2`) events satisfy this.
+ */
+type ValidateInputEvent = Pick<
+	APIGatewayProxyEvent | APIGatewayProxyEventV2,
+	'headers' | 'body' | 'pathParameters' | 'queryStringParameters'
+>
+
+/**
+ * Validates the input of a Lambda function.
+ *
+ * Use the `Event` type parameter to specify the type of the event passed
+ * to `mapInput`, e.g. `validateInput<typeof Schema, APIGatewayProxyEvent>(Schema, (event) => ({ method: event.httpMethod }))`.
+ * It is inferred from `mapInput` if its parameter is typed explicitly.
+ */
+export const validateInput = <
+	Schema extends TSchema,
+	Event extends ValidateInputEvent = APIGatewayProxyEventV2,
+>(
 	schema: Schema,
-	mapInput?: (e: APIGatewayProxyEventV2) => unknown,
+	mapInput?: (e: Event) => unknown,
 ): MiddlewareObj<
-	APIGatewayProxyEventV2,
+	Event,
 	APIGatewayProxyStructuredResultV2,
 	Error,
 	Context & ValidInput<Schema>
