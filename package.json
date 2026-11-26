@@ -66,7 +66,7 @@
     "npm": ">=12.0.2 <13"
   },
   "dependencies": {
-    "@aws-lambda-powertools/metrics": "2.36.0",
+    "@aws-lambda-powertools/metrics": "2.37.0",
     "@middy/core": "7.9.2",
     "@middy/input-output-logger": "7.9.2",
     "@nrfcloud/problem-detail": "1.7.1",
